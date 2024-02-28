@@ -6,8 +6,9 @@ import { StatusCodes } from "http-status-codes";
 import Job from "../models/jobModel.js";
 
 export const getAllJobs = async (req, res) => {
-  console.log(req);
-  const jobs = await Job.find({});
+  //get only the jobs created by the user
+  console.log(req.user);
+  const jobs = await Job.find({ createdBy: req.user.userId });
   res.status(StatusCodes.OK).json({ jobs });
 };
 
@@ -18,6 +19,8 @@ export const getJob = async (req, res) => {
 
 export const addJob = async (req, res) => {
   //const { company, position } = req.body;
+  // add the created by field to the object while creating it
+  req.body.createdBy = req.user.userId;
   const job = await Job.create(req.body);
   res.status(StatusCodes.CREATED).json({ STATUS: "success", job });
 };

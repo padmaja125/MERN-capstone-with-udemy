@@ -18,6 +18,9 @@ import bodyParser from "body-parser";
 import jobRouter from "./router/jobRouter.js";
 import authRouter from "./router/authRouter.js";
 
+// cookie
+import cookieParser from "cookie-parser";
+
 dotenv.config();
 
 const app = express();
@@ -25,6 +28,7 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -42,7 +46,7 @@ try {
   process.exit(1);
 }
 
-app.use("/api/v1", authenticateCheck, jobRouter);
+app.use("/api/v1/jobRoute", authenticateCheck, jobRouter);
 app.use("/api/v1/auth", authRouter);
 
 //error in url

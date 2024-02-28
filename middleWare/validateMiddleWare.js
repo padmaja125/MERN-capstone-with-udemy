@@ -2,7 +2,12 @@
 import { body, param, validationResult } from "express-validator";
 
 // custom error
-import { BadRequestError, DataNotFoundError } from "../errors/customErrors.js";
+import {
+  BadRequestError,
+  DataNotFoundError,
+  UnauthenticatedError,
+  UnauthorizedError,
+} from "../errors/customErrors.js";
 
 // model constants imported
 import { JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
@@ -23,6 +28,8 @@ const withValidationError = (validateValues) => {
         const errorMessages = errors.array().map((error) => error.msg);
         if (errorMessages[0].startsWith("no job"))
           throw new DataNotFoundError(errorMessages);
+        if (errorMessages[0].startsWith("not authorized"))
+          throw new UnauthenticatedError(errorMessages);
         throw new BadRequestError(errorMessages);
       }
       next();
@@ -44,11 +51,16 @@ export const validateJobInput = withValidationError([
 
 export const validateParamId = withValidationError([
   param("id")
-    .custom(async (id) => {
+    .custom(async (id, { req }) => {
       const isValidId = mongoose.Types.ObjectId.isValid(id);
       if (!isValidId) throw new BadRequestError("invalid MongoId");
       const job = await Job.findById(id);
       if (!job) throw new DataNotFoundError(`no job with id ${id}`);
+      console.log(req);
+      const userId = req.user.userId === job.createdBy.toString();
+      const userRole = req.user.role === "admin";
+      if (!userId && !userRole)
+        throw new UnauthenticatedError(`not authorized by ${id}`);
     })
     .withMessage("not a valid mongo id"),
 ]);
