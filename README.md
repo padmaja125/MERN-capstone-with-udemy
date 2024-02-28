@@ -12,23 +12,23 @@ npm create vite@latest projectName -- --template react
 
 #### Technology Stack For APP
 
-# Platform: JavaScript, Java 17+
+- Platform: JavaScript, Java 17+
 
-# Frameworks: React.js, node.js, Spring framework and its portfolio projects like Spring Boot, Spring Security, Spring Data JPA
+- Frameworks: React.js, node.js
 
-# Token based Authentication: JWT
+- Token based Authentication: JWT
 
-# Build Tool: Maven, Node
+- Build Tool: Node
 
-# IDE: VS code, Spring Tool Suite
+- IDE: VS code
 
-# Server: Tomcat Embedded Server
+- Server: Tomcat Embedded Server
 
-# DB: Mysql DB, Mongo DB
+- DB: Mongo DB
 
-# Rest Client: PostMan, Thunder Client
+- Rest Client: PostMan, Thunder Client
 
-# Cloud Deploy: AWS cloud
+- Cloud Deploy: AWS cloud
 
 #### Vite - Folder and File Structure
 
