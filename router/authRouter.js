@@ -1,0 +1,14 @@
+import { Router } from "express";
+
+import { register, login } from "../controller/authController.js";
+import {
+  validateRegisterInput,
+  validateLoginInput,
+} from "../middleWare/validateMiddleWare.js";
+
+const router = Router();
+
+router.route("/login").post(validateLoginInput, login);
+router.route("/register").post(validateRegisterInput, register);
+
+export default router;
