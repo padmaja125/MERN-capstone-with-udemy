@@ -14,7 +14,7 @@ import {
   addJob,
   deleteJob,
   updateJob,
-} from "../controller/controller.js";
+} from "../controller/jobController.js";
 
 router.route("/jobs").get(getAllJobs).post(validateJobInput, addJob);
 router

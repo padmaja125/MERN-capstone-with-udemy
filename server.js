@@ -17,6 +17,7 @@ import bodyParser from "body-parser";
 // router
 import jobRouter from "./router/jobRouter.js";
 import authRouter from "./router/authRouter.js";
+import userRouter from "./router/userRouter.js";
 
 // cookie
 import cookieParser from "cookie-parser";
@@ -48,6 +49,7 @@ try {
 
 app.use("/api/v1/jobRoute", authenticateCheck, jobRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", authenticateCheck, userRouter);
 
 //error in url
 app.use("*", (req, res) => {
