@@ -1,20 +1,63 @@
-import { Link } from "react-router-dom";
+import {
+  Link,
+  Form,
+  redirect,
+  useNavigation,
+  useActionData,
+} from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
 import { Logo, FormRow } from "../components";
+//import axios from "axios";
+import customFetch from "../utils/customFetch.js";
+import { toast } from "react-toastify";
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  const error = { msg: "" };
+  if (data.password.length < 3) {
+    error.msg = "password too short";
+    return error;
+  }
+  try {
+    await customFetch.post("/auth/register", data);
+    //await axios.post("/api/v1/auth/register", data);
+    toast.success("Registration successful");
+    return redirect("/login");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const Register = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
+  const isSubmitting = navigation.state === "submitting";
+  const error = useActionData();
   return (
     <Wrapper>
-      <form className="form">
+      <Form method="post" className="form">
         <Logo />
         <h4>Register</h4>
-        <FormRow type="text" name="First Name" defaultValue="john" />
-        <FormRow type="text" name="Last Name" />
-        <FormRow type="text" name="Location" />
-        <FormRow type="email" name="Email" labelText="Email" />
-        <FormRow type="password" name="password" labelText="Password" />
-        <button type="submit" className="btn btn-block">
-          Submit
+        {error?.msg && <p style={{ color: "red" }}>error.msg</p>}
+        <FormRow type="text" name="name" defaultValue="john" />
+        <FormRow type="text" name="lastName" defaultValue="smith" />
+        <FormRow type="text" name="location" defaultValue="Atlanta" />
+        <FormRow
+          type="email"
+          name="email"
+          labelText="Email"
+          defaultValue="john@tester.com"
+        />
+        <FormRow
+          type="password"
+          name="password"
+          labelText="Password"
+          defaultValue="tester123"
+        />
+        <button type="submit" className="btn btn-block" disabled={isSubmitting}>
+          {isSubmitting ? "submitting..." : "submit"}
         </button>
         <p>
           Already a member?
@@ -22,7 +65,7 @@ const Register = () => {
             Login
           </Link>
         </p>
-      </form>
+      </Form>
     </Wrapper>
   );
 };

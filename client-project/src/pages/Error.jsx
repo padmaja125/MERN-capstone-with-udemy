@@ -10,8 +10,8 @@ const Error = () => {
       <Wrapper>
         <div>
           <img src={img} alt="page not found" />
-          <h3>Oops! Can't find now</h3>
-          <p>We can't able to find the page which you are looking for</p>
+          <h3>Oops! Can not find now</h3>
+          <p>We can not able to find the page which you are looking for</p>
           <Link to="/dashboard"> back home </Link>
         </div>
       </Wrapper>

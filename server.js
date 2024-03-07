@@ -46,7 +46,9 @@ try {
   console.log(error);
   process.exit(1);
 }
-
+app.get("/api/v1/test", (req, res) => {
+  res.send({ msg: "test page" });
+});
 app.use("/api/v1/jobRoute", authenticateCheck, jobRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", authenticateCheck, userRouter);
