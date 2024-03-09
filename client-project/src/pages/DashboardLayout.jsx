@@ -75,6 +75,7 @@ const DashboardLayout = () => {
 };
 
 //export the custom hook
+// eslint-disable-next-line react-refresh/only-export-components
 export const useDashboardContext = () => {
   return useContext(DashboardContext);
 };
