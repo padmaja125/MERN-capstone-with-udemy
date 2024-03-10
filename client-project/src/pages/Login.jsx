@@ -1,9 +1,4 @@
-import {
-  Link,
-  redirect,
-  useNavigation,
-  Form,
-} from "react-router-dom";
+import { Link, redirect, useNavigation, Form } from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
 import { FormRow, Logo } from "../components";
 import { toast } from "react-toastify";
@@ -27,15 +22,15 @@ const Login = () => {
   const navigation = useNavigation();
   console.log(navigation);
   const isSubmitting = navigation.state === "submitting";
-  
+
   return (
     <Wrapper>
       <Form method="post" className="form">
         <Logo />
         <h4>Login</h4>
-        
-        <FormRow type="email" name="email" defaultValue="john@gmail.com" />
-        <FormRow type="password" name="password" defaultValue="john123" />
+
+        <FormRow type="email" name="email" defaultValue="john@tester.com" />
+        <FormRow type="password" name="password" defaultValue="tester123" />
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>
           {isSubmitting ? "submitting..." : "submit"}
         </button>
