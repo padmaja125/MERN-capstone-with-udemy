@@ -15,7 +15,9 @@ export const action = async ({ request }) => {
   }
 
   try {
+    console.log(formData);
     const resp = await customFetch.patch("/user/update-user", formData);
+    console.log(resp);
     toast.success("Profile updated successfully");
   } catch (error) {
     toast.error(error?.response?.data?.msg);

@@ -239,3 +239,13 @@ npm i dayjs@1.11.7
 - get two images from pexels
 
 [pexels](https://www.pexels.com/search/person/)
+
+#### Cloudinary - Create Account/Get API Keys
+
+[Cloudinary](https://cloudinary.com/)
+
+Cloudinary is a cloud-based media management platform that helps businesses store, optimize, and deliver images and videos across the web. It provides developers with an easy way to upload, manipulate, and serve media assets, enabling faster and more efficient delivery of visual content on websites and applications. Cloudinary also offers features like automatic resizing, format conversion, and responsive delivery to ensure optimal user experiences across different devices and network conditions.
+
+#### Mock Data
+
+[Mockaroo ](https://www.mockaroo.com/)

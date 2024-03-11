@@ -6,6 +6,7 @@ import {
   validateParamId,
 } from "../middleWare/validateMiddleWare.js";
 
+import { testUserCheck } from "../middleWare/authMiddleWare.js";
 const router = Router();
 
 import {
@@ -15,12 +16,12 @@ import {
   deleteJob,
   updateJob,
 } from "../controller/jobController.js";
-
-router.route("/jobs").get(getAllJobs).post(validateJobInput, addJob);
+// before getting to add/update/delete job, need to check whether it's a test user
+router.route("/jobs").get(getAllJobs).post(testUserCheck,validateJobInput, addJob);
 router
   .route("/job/:id")
   .get(validateParamId, getJob)
-  .patch(validateJobInput, validateParamId, updateJob)
-  .delete(validateParamId, deleteJob);
+  .patch(testUserCheck,validateJobInput, validateParamId, updateJob)
+  .delete(testUserCheck,validateParamId, deleteJob);
 
 export default router;

@@ -26,13 +26,23 @@ import { fileURLToPath } from "url";
 // cookie
 import cookieParser from "cookie-parser";
 
+//api for keeping image
+import cloudinary from "cloudinary";
+
+//.env config
 dotenv.config();
+//cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 const app = express();
 //es6 module
 const __dirname = dirname(fileURLToPath(import.meta.url));
 //special middleware for
-app.use(express.static(path.resolve(__dirname, "./public")))
+app.use(express.static(path.resolve(__dirname, "./public")));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }

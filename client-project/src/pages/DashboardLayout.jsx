@@ -42,7 +42,7 @@ const DashboardLayout = () => {
   //arrow function to show username or not
   const logoutUser = async () => {
     navigate("/");
-    await customFetch.get("/auth/logout");
+    await customFetch.post("/auth/logout");
     console.log("logout User");
     toast.success("logging out....");
   };

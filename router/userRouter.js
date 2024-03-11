@@ -9,6 +9,7 @@ import {
 import {
   authenticateCheck,
   authorizePermissions,
+  testUserCheck
 } from "../middleWare/authMiddleWare.js";
 
 //for update
@@ -24,9 +25,12 @@ router
 //   .route("/update-user")
 //   .patch(upload.single("avatar"), validateUpdateUserInput, updateUserDetails);
 
+
+// before update we need to check its a test user
 router.patch(
   "/update-user",
   upload.single("avatar"),
+  testUserCheck,
   validateUpdateUserInput,
   updateUserDetails
 );
