@@ -15,9 +15,13 @@ import {
   addJob,
   deleteJob,
   updateJob,
+  showStats
 } from "../controller/jobController.js";
 // before getting to add/update/delete job, need to check whether it's a test user
 router.route("/jobs").get(getAllJobs).post(testUserCheck,validateJobInput, addJob);
+// should add in-between (else express will think stats is the id we are passing)
+router.route("/stats").get(showStats)
+
 router
   .route("/job/:id")
   .get(validateParamId, getJob)

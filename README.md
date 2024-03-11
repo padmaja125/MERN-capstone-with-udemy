@@ -249,3 +249,13 @@ Cloudinary is a cloud-based media management platform that helps businesses stor
 #### Mock Data
 
 [Mockaroo ](https://www.mockaroo.com/)
+
+#### Stats - Complete Server Functionality
+
+[MongoDB Docs](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/)
+
+The MongoDB aggregation pipeline is like a factory line for data. Data enters, it goes through different stages like cleaning, sorting, or grouping, and comes out at the end changed in some way. It's a way to process data inside MongoDB.
+
+#### Charts
+
+[recharts](https://recharts.org/en-US/)
