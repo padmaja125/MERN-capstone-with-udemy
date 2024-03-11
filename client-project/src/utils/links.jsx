@@ -9,7 +9,7 @@ const links = [
   { text: "all jobs", path: "all-jobs", icon: <MdQueryStats /> },
   { text: "stats", path: "stats", icon: <IoBarChartSharp /> },
   { text: "profile", path: "profile", icon: <ImProfile /> },
-  { text: "admin", path: ".", icon: <MdAdminPanelSettings /> },
+  { text: "admin", path: "admin", icon: <MdAdminPanelSettings /> },
 ];
 
 export default links;

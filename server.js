@@ -19,13 +19,20 @@ import jobRouter from "./router/jobRouter.js";
 import authRouter from "./router/authRouter.js";
 import userRouter from "./router/userRouter.js";
 
+//public
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
 // cookie
 import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express();
-
+//es6 module
+const __dirname = dirname(fileURLToPath(import.meta.url));
+//special middleware for
+app.use(express.static(path.resolve(__dirname, "./public")))
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }

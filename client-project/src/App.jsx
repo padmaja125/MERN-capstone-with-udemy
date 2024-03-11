@@ -14,17 +14,21 @@ import {
   Admin,
   Profile,
 } from "./pages";
+//action
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
-import { loader as dashboardLoader } from "./pages/DashboardLayout";
+import { action as profileAction } from "./pages/Profile";
 import { action as addJobAction } from "./pages/AddJob";
 import { action as deleteJobAction } from "./pages/DeleteJob";
-import { loader as allJobsLoader } from "./pages/AllJobs";
-import { loader as adminLoader } from "./pages/Admin";
 import {
   loader as editJobLoader,
   action as editJobAction,
 } from "./pages/EditJob";
+//loader
+import { loader as dashboardLoader } from "./pages/DashboardLayout";
+import { loader as allJobsLoader } from "./pages/AllJobs";
+import { loader as adminLoader } from "./pages/Admin";
+
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme);
@@ -75,6 +79,7 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <Profile />,
+            action: profileAction,
           },
           {
             path: "Add-Job",
