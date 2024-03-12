@@ -9,7 +9,7 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
 
   const file = formData.get("avatar");
-  if (file && file.size > 500000) {
+  if (file && file.size > 50000000) {
     toast.error("Image size too large");
     return null;
   }
@@ -36,7 +36,7 @@ const Profile = () => {
         <h4 className="form-title"> Profile</h4>
         <div>
           <div>
-            <label>Select an image file (max 0.5 MB):</label>
+            <label>Select an image file (max 5 MB):</label>
             <input
               type="file"
               id="avatar"

@@ -7,26 +7,36 @@ import { createContext, useContext } from "react";
 //create global context to send props to the child components
 const AllJobsContext = createContext();
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
   try {
-    const { data } = await customFetch.get("/jobRoute/jobs");
-    toast.success("got all data");
-    return data;
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+
+    const { data } = await customFetch.get("/jobRoute/jobs", {
+      params,
+    });
+
+    return {
+      data,
+      searchValues: { ...params },
+    };
   } catch (error) {
-    toast.error(error?.response?.data?.msg);
+    toast.error(error.response.data.msg);
+    return error;
   }
 };
 
 const AllJobs = () => {
-  const { jobs } = useLoaderData();
+  const { data, searchValues } = useLoaderData();
+
   return (
-    <AllJobsContext.Provider value={{ jobs }}>
+    <AllJobsContext.Provider value={{ data, searchValues }}>
       <SearchJobContainer />
       <DisplayAllJobContainer />
     </AllJobsContext.Provider>
   );
 };
+export default AllJobs;
 
 export const useAllJobsContext = () => useContext(AllJobsContext);
-
-export default AllJobs;

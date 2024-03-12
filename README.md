@@ -259,3 +259,13 @@ The MongoDB aggregation pipeline is like a factory line for data. Data enters, i
 #### Charts
 
 [recharts](https://recharts.org/en-US/)
+
+#### QueryParams
+
+Query parameters, also known as query strings or URL parameters, are used to pass information to a web server through the URL of a webpage. They are typically appended to the end of a URL after a question mark (?) and separated by ampersands (&). Query parameters consist of a key-value pair, where the key represents the parameter name and the value represents the corresponding data being passed. They are commonly used in web applications to provide additional context or parameters for server-side processing or to filter and sort data.
+
+#### Debounce
+
+[JS Nuggets - Debounce](https://youtu.be/tYx6pXdvt1s)
+
+In JavaScript, debounce is a way to limit how often a function gets called. It helps prevent rapid or repeated function executions by introducing a delay. This is useful for tasks like handling user input, where you want to wait for a pause before triggering an action to avoid unnecessary processing.
