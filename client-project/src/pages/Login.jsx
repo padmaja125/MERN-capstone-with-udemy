@@ -50,8 +50,8 @@ const Login = () => {
         <Logo />
         <h4>Login</h4>
 
-        <FormRow type="email" name="email" defaultValue="john@tester.com" />
-        <FormRow type="password" name="password" defaultValue="tester123" />
+        <FormRow type="email" name="email" />
+        <FormRow type="password" name="password"  />
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>
           {isSubmitting ? "submitting..." : "submit"}
         </button>

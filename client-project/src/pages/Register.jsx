@@ -41,21 +41,11 @@ const Register = () => {
         <Logo />
         <h4>Register</h4>
         {error?.msg && <p style={{ color: "red" }}>error.msg</p>}
-        <FormRow type="text" name="name" defaultValue="john" />
-        <FormRow type="text" name="lastName" defaultValue="smith" />
-        <FormRow type="text" name="location" defaultValue="Atlanta" />
-        <FormRow
-          type="email"
-          name="email"
-          labelText="Email"
-          defaultValue="john@tester.com"
-        />
-        <FormRow
-          type="password"
-          name="password"
-          labelText="Password"
-          defaultValue="tester123"
-        />
+        <FormRow type="text" name="name" />
+        <FormRow type="text" name="lastName" />
+        <FormRow type="text" name="location" />
+        <FormRow type="email" name="email" labelText="Email" />
+        <FormRow type="password" name="password" labelText="Password" />
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>
           {isSubmitting ? "submitting..." : "submit"}
         </button>

@@ -269,3 +269,7 @@ Query parameters, also known as query strings or URL parameters, are used to pas
 [JS Nuggets - Debounce](https://youtu.be/tYx6pXdvt1s)
 
 In JavaScript, debounce is a way to limit how often a function gets called. It helps prevent rapid or repeated function executions by introducing a delay. This is useful for tasks like handling user input, where you want to wait for a pause before triggering an action to avoid unnecessary processing.
+
+#### Deploy On Render
+
+[Render](https://render.com/)

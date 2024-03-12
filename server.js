@@ -75,4 +75,9 @@ app.use("*", (req, res) => {
   res.status(404).json({ msg: "page not found" });
 });
 
+// setting up for production
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+});
+
 app.use(errorHandlerMiddleWare);
