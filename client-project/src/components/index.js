@@ -9,3 +9,4 @@ export { default as SearchJobContainer } from "./SearchJobContainer";
 export { default as StatsItem } from "./StatsItem";
 export { default as ChartsContainer } from "./ChartsContainer";
 export { default as StatsContainer } from "./StatsContainer";
+export { default as Loading } from "./Loading";

@@ -42,7 +42,7 @@ const app = express();
 //es6 module
 const __dirname = dirname(fileURLToPath(import.meta.url));
 //special middleware for
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -77,7 +77,7 @@ app.use("*", (req, res) => {
 
 // setting up for production
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
 });
 
 app.use(errorHandlerMiddleWare);
